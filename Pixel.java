@@ -1,9 +1,9 @@
 public class Pixel
 {
-  private static int alpha;
-  private static int blue;
-  private static int green;
-  private static int red;
+  private int alpha;
+  private int blue;
+  private int green;
+  private int red;
 
   public Pixel (int alphaGiven, int blueGiven, int greenGiven, int redGiven)
   {

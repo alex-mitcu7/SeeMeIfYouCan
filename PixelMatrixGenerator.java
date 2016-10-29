@@ -43,6 +43,7 @@ public class PixelMatrixGenerator
 
       // Create new Pixel object.
       pixelMatrix[row][col] = new Pixel(alpha, blue, green, red);
+
       // Increment col and row.
       col++;
       if (col == width)
@@ -55,6 +56,5 @@ public class PixelMatrixGenerator
     for (int i = 0; i < height; i++)
       for (int j = 0; j < width; j++)
         System.out.println(pixelMatrix[i][j]);
-
   } // main
 } // class PixelMatrixGenerator
