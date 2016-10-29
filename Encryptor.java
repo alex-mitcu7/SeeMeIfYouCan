@@ -6,7 +6,7 @@ import java.lang.*;
 
 public class Encryptor
 {
-	public static String encrypt(char ch, int encryptor)
+	public static int encrypt(char ch, int encryptor)
 	{
 		String binaryArray = new String();
 		String binaryArrayCrypted = new String();
@@ -31,6 +31,7 @@ public class Encryptor
 		} //for i
 
 		String xorString = xor.toString();
-    return xorString;
+    int toBeReturned = Integer.parseInt(xorString, 2);
+    return toBeReturned;
 	} // encrypt
 } // class Encryptor
