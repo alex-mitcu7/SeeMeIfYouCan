@@ -42,7 +42,7 @@ public class Pixel
     argb += (green << 8);
     argb += (red << 16); 
     return argb;
-  }
+  } // getArgb
   
   public void setAlpha (int newAlpha)
   {
