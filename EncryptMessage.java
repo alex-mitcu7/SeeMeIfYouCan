@@ -2,7 +2,7 @@ public class EncryptMessage
 {
   // Loop through the message to encrypt it into the image represented by the
   // matrix
-  public static Pixel[][] encrypt(String message, Pixel[][] matrix, int height, int width)
+  public static Pixel[][] encryptMessage(String message, Pixel[][] matrix, int height, int width)
   {
     // Keeps track of the row on which the pixel will be encrypted
     int currentRow = 0;
@@ -13,6 +13,9 @@ public class EncryptMessage
     int encryptor;
     // The 8bit binary number saved a string
     int encryptedNumber;
+    // The index of the pixel within the matrix in which the caracter will be
+    // encrypted
+    int indexToEncrypt;
 
     for (int index = 0; index < message.length(); index++)
     {
@@ -26,5 +29,7 @@ public class EncryptMessage
       matrix[currentRow][indexToEncrypt].setRed(encryptedNumber);
       currentRow++;
     } // for
+
+    return matrix;
   } // encrypt
 } // class EncryptMessage
