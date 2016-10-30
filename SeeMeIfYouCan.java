@@ -98,20 +98,20 @@ public class SeeMeIfYouCan {
 
 
 		//Review Panel
-		reviewPanel = new JPanel();
-		reviewPanel.setLayout(new GridLayout(1, 1));
+		// reviewPanel = new JPanel();
+		// reviewPanel.setLayout(new GridLayout(1, 1));
 
-		//ImageContainer
-		reviewImage = new JLabel(defaultImage);
-		reviewPanel.add(reviewImage);
+		// //ImageContainer
+		// reviewImage = new JLabel(defaultImage);
+		// reviewPanel.add(reviewImage);
 
-		c.weightx = 0.5;
-		c.fill = GridBagConstraints.BOTH;
-		c.ipady = 50;
-		c.ipadx = 50;
-		c.gridx = 3;
-		c.gridy = 0;
-		mainFrame.add(reviewPanel);
+		// c.weightx = 0.5;
+		// c.fill = GridBagConstraints.BOTH;
+		// c.ipady = 50;
+		// c.ipadx = 50;
+		// c.gridx = 3;
+		// c.gridy = 0;
+		// mainFrame.add(reviewPanel);
 
 
 		//Message label
@@ -127,6 +127,7 @@ public class SeeMeIfYouCan {
 		//TextArea
 		taMessage = new TextArea("Message");
 		taMessage.setEditable(true);
+		taMessage.setFont(new Font("Serif", Font.PLAIN, 20));
 		c.weightx = 0.5;
 		//c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 1;
@@ -172,17 +173,17 @@ public class SeeMeIfYouCan {
 
 
 		//The saved image label
-		lblSavedImage = new JLabel("<html>The image with the encrypted message was saved in the app's folder.</html>", SwingConstants.CENTER);
-		lblSavedImage.setVisible(false);
+		// lblSavedImage = new JLabel("<html>The image with the encrypted message was saved in the app's folder.</html>", SwingConstants.CENTER);
+		// lblSavedImage.setVisible(false);
 		//lblSavedImage.setAlignment(Label.CENTER);
-		lblSavedImage.setFont(new Font("Serif", Font.PLAIN, 20));
-		c.weightx = 0.5;
+		//lblSavedImage.setFont(new Font("Serif", Font.PLAIN, 20));
+		//c.weightx = 0.5;
 		//c.fill = GridBagConstraints.HORIZONTAL;
-		c.ipady = 50;
-		c.ipadx = 50;
-		c.gridx = 3;
-		c.gridy = 1;
-		mainFrame.add(lblSavedImage, c);
+		//c.ipady = 50;
+		//c.ipadx = 50;
+		//c.gridx = 3;
+		//c.gridy = 1;
+		//mainFrame.add(lblSavedImage, c);
 		mainFrame.pack();
 		mainFrame.setVisible(true);
 
@@ -196,7 +197,7 @@ public class SeeMeIfYouCan {
 
 	private void choosePhotoDialog()
 	{
-		    fileDialog = new FileDialog(mainFrame,"Select file");
+		fileDialog = new FileDialog(mainFrame,"Select file");
         fileDialog.setVisible(true);
         imagePanel.remove(orgImage);
         ImageIcon tempImage = new ImageIcon("" + fileDialog.getDirectory() + fileDialog.getFile());
@@ -223,16 +224,18 @@ public class SeeMeIfYouCan {
     catch (IOException e) {
       return;
     }
-		reviewPanel.remove(reviewImage);
-		ImageIcon tempImage = new ImageIcon("reconstructedImage.png");
-        Image tempImg = tempImage.getImage();
-        Image newImg = tempImg.getScaledInstance(512, 512, java.awt.Image.SCALE_SMOOTH);
-        tempImage = new ImageIcon(newImg);
-        reviewPanel.add(reviewImage);
-        reviewPanel.revalidate();
-		lblSavedImage.setVisible(true);
-		taMessage.setText("");
-		mainFrame.revalidate();
+		// reviewPanel.remove(reviewImage);
+		// ImageIcon tempImage2 = new ImageIcon("reconstructedImage.png");
+  //       Image tempImg2 = tempImage2.getImage();
+  //       Image newImg2 = tempImg2.getScaledInstance(512, 512, java.awt.Image.SCALE_SMOOTH);
+  //       tempImage2 = new ImageIcon(newImg2);
+        //JLabel label = new JLabel(tempImage2);
+        // reviewImage = new JLabel(tempImage2);
+        // reviewPanel.add(reviewImage);
+        // reviewPanel.revalidate();
+		//lblSavedImage.setVisible(true);
+		taMessage.setText("The image with the encrypted message was saved in the app's folder.");
+		mainFrame.setVisible(true);
 	}
 
 	private void decryptMessage()
