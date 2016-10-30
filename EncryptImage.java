@@ -5,14 +5,14 @@ import javax.imageio.ImageIO;
 
 public class EncryptImage
 {
-  public static void main(String[] args) throws IOException
+  public static void fire(String path, String msg) throws IOException
   {
-    BufferedImage image = ImageIO.read(PixelMatrixTest.class.getResource(args[0]));
+    BufferedImage image = ImageIO.read(PixelMatrixTest.class.getResource(path));
     PixelMatrix matrix = new PixelMatrix(image);
     int height = matrix.getHeight();
     int width = matrix.getWidth();
     Pixel[][] originalMatrix = matrix.returnMatrix();
-    String message = args[1];
+    String message = msg;
     Pixel[][] encryptedMatrix = new Pixel[height][width];
 
     // Keep track of the original matrix

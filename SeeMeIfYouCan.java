@@ -11,7 +11,7 @@ import javax.swing.*;
 public class SeeMeIfYouCan {
 
 	private JFrame mainFrame;
-
+  private FileDialog fileDialog;
 	private Label lblInsertPhoto;
 	private Label lblMessage;
 	private JLabel lblSavedImage;
@@ -196,7 +196,7 @@ public class SeeMeIfYouCan {
 
 	private void choosePhotoDialog()
 	{
-		final FileDialog fileDialog = new FileDialog(mainFrame,"Select file");
+		    fileDialog = new FileDialog(mainFrame,"Select file");
         fileDialog.setVisible(true);
         imagePanel.remove(orgImage);
         ImageIcon tempImage = new ImageIcon("" + fileDialog.getDirectory() + fileDialog.getFile());
@@ -214,7 +214,12 @@ public class SeeMeIfYouCan {
 	{
 		String pathToOriginalImage = "" + fileDialog.getDirectory() + fileDialog.getFile();
 		String message = taMessage.getText();
-		EncryptImage.fire(pathToOriginalImage, message);
+    try {
+		    EncryptImage.fire(pathToOriginalImage, message);
+    }
+    catch (IOException e) {
+      return;
+    }
 		reviewPanel.remove(reviewImage);
 		ImageIcon tempImage = new ImageIcon("reconstructedImage.png");
         Image tempImg = tempImage.getImage();
@@ -228,8 +233,13 @@ public class SeeMeIfYouCan {
 
 	private void decryptMessage()
 	{
-		String pathToImage = "" + fileDialog.getDirectory() + fileDialog.getFile();
-		String decryptedMsg = DecryptImage.fire(pathToImage);
-		taMessage.setText(decryptedMsg);
+    try {
+		    String pathToImage = "" + fileDialog.getDirectory() + fileDialog.getFile();
+		    String decryptedMsg = DecryptImage.fire(pathToImage);
+		    taMessage.setText(decryptedMsg);
+    }
+    catch(IOException e) {
+      return;
+    }
 	}
 }
