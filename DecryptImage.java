@@ -9,7 +9,7 @@ public class DecryptImage
 {
   public static String fire(String pathToImage) throws IOException
   {
-    BufferedImage image = ImageIO.read(PixelMatrixTest.class.getResource(pathToImage));
+    BufferedImage image = ImageIO.read(DecryptImage.class.getResource(pathToImage));
     PixelMatrix matrix = new PixelMatrix(image);
     int height = matrix.getHeight();
     int width = matrix.getWidth();

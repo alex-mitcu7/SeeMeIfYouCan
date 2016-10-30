@@ -7,7 +7,8 @@ public class EncryptImage
 {
   public static void fire(String path, String msg) throws IOException
   {
-    BufferedImage image = ImageIO.read(PixelMatrixTest.class.getResource(path));
+    BufferedImage image = ImageIO.read(EncryptImage.class.getResource(path));
+    System.out.println(path + msg);
     PixelMatrix matrix = new PixelMatrix(image);
     int height = matrix.getHeight();
     int width = matrix.getWidth();

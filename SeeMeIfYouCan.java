@@ -205,6 +205,8 @@ public class SeeMeIfYouCan {
         tempImage = new ImageIcon(newImg);
         orgImage = new JLabel(tempImage);
         imagePanel.add(orgImage);
+        System.out.println("" + fileDialog.getDirectory());
+        System.out.println("" + fileDialog.getFile());
         imagePanel.revalidate();
         mainFrame.setVisible(true);
 	}//choosePhotoDialog
@@ -212,7 +214,8 @@ public class SeeMeIfYouCan {
 
 	private void encryptMessage()
 	{
-		String pathToOriginalImage = "" + fileDialog.getDirectory() + fileDialog.getFile();
+		//String pathToOriginalImage = "" + fileDialog.getDirectory() + fileDialog.getFile();
+		String pathToOriginalImage = "" + fileDialog.getFile();
 		String message = taMessage.getText();
     try {
 		    EncryptImage.fire(pathToOriginalImage, message);
@@ -228,6 +231,7 @@ public class SeeMeIfYouCan {
         reviewPanel.add(reviewImage);
         reviewPanel.revalidate();
 		lblSavedImage.setVisible(true);
+		taMessage.setText("");
 		mainFrame.revalidate();
 	}
 
