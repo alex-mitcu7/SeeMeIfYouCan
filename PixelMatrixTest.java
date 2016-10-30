@@ -26,8 +26,10 @@ public class PixelMatrixTest
                                             originalMatrix[i][j].getRed());
         }
 
-    // Encript the message into the matrix
+    // Encrypt the message into the matrix
     EncryptMessage.encryptMessage(message, encryptedMatrix, height, width);
 
+    // Decrypt the message
+    System.out.println(EncryptMessage.decryptMessage(encryptedMatrix, height, width));
   }
 }
