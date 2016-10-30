@@ -212,16 +212,24 @@ public class SeeMeIfYouCan {
 
 	private void encryptMessage()
 	{
-		// Image/File finalImage = Class.encryptMessage(File poza, String mesaj);
-		// ....
+		String pathToOriginalImage = "" + fileDialog.getDirectory() + fileDialog.getFile();
+		String message = taMessage.getText();
+		EncryptImage.fire(pathToOriginalImage, message);
+		reviewPanel.remove(reviewImage);
+		ImageIcon tempImage = new ImageIcon("reconstructedImage.png");
+        Image tempImg = tempImage.getImage();
+        Image newImg = tempImg.getScaledInstance(512, 512, java.awt.Image.SCALE_SMOOTH);
+        tempImage = new ImageIcon(newImg);
+        reviewPanel.add(reviewImage);
+        reviewPanel.revalidate();
 		lblSavedImage.setVisible(true);
 		mainFrame.revalidate();
 	}
 
 	private void decryptMessage()
 	{
-		//String decryptedMsg = Class.decryptMessage(File poza);
-		String mesaj = "Test";
-		//taMessage.setText(decryptedMsg);
+		String pathToImage = "" + fileDialog.getDirectory() + fileDialog.getFile();
+		String decryptedMsg = DecryptImage.fire(pathToImage);
+		taMessage.setText(decryptedMsg);
 	}
 }
