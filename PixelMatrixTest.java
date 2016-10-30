@@ -14,6 +14,9 @@ public class PixelMatrixTest
     Pixel[][] originalMatrix = matrix.returnMatrix();
     String message = args[1];
     Pixel[][] encryptedMatrix = new Pixel[height][width];
+
+    // Keep track of the original matrix
+    // This will later be removed
     for(int i = 0; i < height; i++)
       for(int j = 0; j < width; j++)
         {
@@ -23,9 +26,8 @@ public class PixelMatrixTest
                                             originalMatrix[i][j].getRed());
         }
 
+    // Encript the message into the matrix
     EncryptMessage.encryptMessage(message, encryptedMatrix, height, width);
-    for(int i = 0; i < height; i++)
-      for(int j = 0; j < height; j++)
-        System.out.println(originalMatrix[i][j].equals(encryptedMatrix[i][j]));
+
   }
 }
