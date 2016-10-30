@@ -14,6 +14,7 @@ public class SeeMeIfYouCan {
 
 	private Label lblInsertPhoto;
 	private Label lblMessage;
+	private JLabel lblSavedImage;
 	private JLabel orgImage;
 	private JLabel reviewImage;
 
@@ -168,8 +169,24 @@ public class SeeMeIfYouCan {
 		c.gridx = 2;
 		c.gridy = 1;
 		mainFrame.add(controlPanel, c);
+
+
+		//The saved image label
+		lblSavedImage = new JLabel("<html>The image with the encrypted message was saved in the app's folder.</html>", SwingConstants.CENTER);
+		lblSavedImage.setVisible(false);
+		//lblSavedImage.setAlignment(Label.CENTER);
+		lblSavedImage.setFont(new Font("Serif", Font.PLAIN, 20));
+		c.weightx = 0.5;
+		//c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady = 50;
+		c.ipadx = 50;
+		c.gridx = 3;
+		c.gridy = 1;
+		mainFrame.add(lblSavedImage, c);
 		mainFrame.pack();
 		mainFrame.setVisible(true);
+
+
 	}//SeeMeIfYouCan
 
 	public static void main(String[] args)
@@ -197,12 +214,14 @@ public class SeeMeIfYouCan {
 	{
 		// Image/File finalImage = Class.encryptMessage(File poza, String mesaj);
 		// ....
-
+		lblSavedImage.setVisible(true);
+		mainFrame.revalidate();
 	}
 
 	private void decryptMessage()
 	{
-		// String decryptedMessage = Class.decryptMessage(File poza);
-		// taMessage.setText(mesaj);
+		//String decryptedMsg = Class.decryptMessage(File poza);
+		String mesaj = "Test";
+		//taMessage.setText(decryptedMsg);
 	}
 }
