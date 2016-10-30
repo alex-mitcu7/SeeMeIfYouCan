@@ -1,13 +1,15 @@
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.io.IOException;
+import java.io.File;
 import javax.imageio.ImageIO;
 
 public class EncryptImage
 {
   public static void fire(String path, String msg) throws IOException
   {
-    BufferedImage image = ImageIO.read(EncryptImage.class.getResource(path));
+    File imageFile = new File(path);
+    BufferedImage image = ImageIO.read(imageFile);
     System.out.println(path + msg);
     PixelMatrix matrix = new PixelMatrix(image);
     int height = matrix.getHeight();

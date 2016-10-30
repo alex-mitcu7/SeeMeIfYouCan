@@ -238,8 +238,11 @@ public class SeeMeIfYouCan {
 	private void decryptMessage()
 	{
     try {
-		    String pathToImage = "" + fileDialog.getDirectory() + fileDialog.getFile();
-		    String decryptedMsg = DecryptImage.fire(pathToImage);
+		    //String pathToImage = "" + fileDialog.getDirectory() + fileDialog.getFile();
+        String pathToImage = "" + fileDialog.getFile();
+        String decryptedMsg = "Nemodificat";
+		    decryptedMsg = DecryptImage.fire(pathToImage);
+        //System.out.println(decryptedMsg);
 		    taMessage.setText(decryptedMsg);
     }
     catch(IOException e) {
