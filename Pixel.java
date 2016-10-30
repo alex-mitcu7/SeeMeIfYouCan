@@ -40,10 +40,10 @@ public class Pixel
     argb += (alpha << 24);
     argb += blue;
     argb += (green << 8);
-    argb += (red << 16); 
+    argb += (red << 16);
     return argb;
   } // getArgb
-  
+
   public void setAlpha (int newAlpha)
   {
     alpha = newAlpha;
@@ -68,4 +68,10 @@ public class Pixel
   {
     return "Pixel with properties R " + red + " G " + green + " B " + blue;
   } // toString
+
+  public boolean equals(Pixel otherPixel)
+  {
+    return this.alpha == otherPixel.getAlpha() && this.red == otherPixel.getRed()
+            && this.green == otherPixel.getGreen() && this.blue == otherPixel.getBlue();
+  } // equals
 } // class Pixel

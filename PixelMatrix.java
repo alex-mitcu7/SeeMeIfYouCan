@@ -7,33 +7,37 @@ public class PixelMatrix
 {
   private Pixel[][] matrix;
   private BufferedImage image;
-  
+  final int width;
+  final int height;
+
   public PixelMatrix(BufferedImage imageGiven)
   {
-    BufferedImage image = imageGiven;
-    matrix = constructMatrix(imageGiven);
+    image = imageGiven;
+    width = image.getWidth();
+    height = image.getHeight();
+    constructMatrix(imageGiven);
   } // PixelMatrix;
-  
+
+  // Return the matrix of pixels
   public Pixel[][] returnMatrix()
   {
-    return matrix;    
-  } // returnMatrix 
-  
-  private Pixel[][] constructMatrix(BufferedImage image)
+    return matrix;
+  } // returnMatrix
+
+  // Construct the matrix of type Pixel from the image
+  private void constructMatrix(BufferedImage image)
   {
+
+    matrix = new Pixel[height][width];
+
     // Array to hold the image pixels.
     final byte[] pixels = ((DataBufferByte) image.getRaster().getDataBuffer()).getData();
-    // Initialise the width and height of the image.
-    final int width = image.getWidth();
-    final int height = image.getHeight();
+
     // Initialise boolean variable to hold wether or not the image has alpha parameter.
     final boolean hasAlphaChannel = image.getAlphaRaster() != null;
     int pixelLength = 4;
     int alpha = 0;
     int increment = 1;
-
-    // Initialize the matrix.
-    Pixel[][] pixelMatrix = new Pixel[height][width];
 
     // Check for alpha parameter.
     if (!hasAlphaChannel)
@@ -55,7 +59,7 @@ public class PixelMatrix
       int red = ((int) pixels[pixel + increment + 2] & 0xff); // red
 
       // Create new Pixel object.
-      pixelMatrix[row][col] = new Pixel(alpha, blue, green, red);
+      matrix[row][col] = new Pixel(alpha, blue, green, red);
 
       // Increment col and row.
       col++;
@@ -65,7 +69,17 @@ public class PixelMatrix
         row++;
       } // if
     } // for
-    
-    return pixelMatrix;
+
   } // constructMatrix
+
+  public int getWidth()
+  {
+    return width;
+  } // getWidth
+
+  public int getHeight()
+  {
+    return height;
+  } // getHeight
+
 } // class PixelMatrix
