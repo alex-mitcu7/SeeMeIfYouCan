@@ -5,7 +5,7 @@ import javax.imageio.ImageIO;
 
 public class EncryptImage
 {
-  public static void fire(String[] args) throws IOException
+  public static void main(String[] args) throws IOException
   {
     BufferedImage image = ImageIO.read(PixelMatrixTest.class.getResource(args[0]));
     PixelMatrix matrix = new PixelMatrix(image);
@@ -31,10 +31,12 @@ public class EncryptImage
 
     // Transform the matrix of pixels into array of argb
     int[] argbArray = new int[height * width];
+    int iterator = 0;
     for (int row = 0; row < height; row++)
       for (int col = 0; col < width; col++)
       {
-        argbArray[row + col] = encryptedMatrix[row][col].getArgb();
+        argbArray[iterator] = encryptedMatrix[row][col].getArgb();
+        iterator++;
       } // for
 
     BufferedImage reconstructedImage = ReconstructImage.reconstruct(argbArray, height, width);
