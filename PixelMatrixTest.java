@@ -29,7 +29,14 @@ public class PixelMatrixTest
     // Encrypt the message into the matrix
     EncryptMessage.encryptMessage(message, encryptedMatrix, height, width);
 
-    // Decrypt the message
-    System.out.println(EncryptMessage.decryptMessage(encryptedMatrix, height, width));
+    // Transform the matrix of pixels into array of argb
+    int[] argbArray = new int[height * width];
+    for (int row = 0; row < height; row++)
+      for (int col = 0; col < width; col++)
+      {
+        argbArray[row + col] = encryptedMatrix[row][col].getArgb();
+      } // for
+
+    BufferedImage reconstructedImage = ReconstructImage.reconstruct(argbArray, height, width);
   }
 }
