@@ -3,9 +3,9 @@ import java.awt.image.DataBufferByte;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-public class PixelMatrixTest
+public class EncryptImage
 {
-  public static void main(String[] args) throws IOException
+  public static void fire(String[] args) throws IOException
   {
     BufferedImage image = ImageIO.read(PixelMatrixTest.class.getResource(args[0]));
     PixelMatrix matrix = new PixelMatrix(image);
